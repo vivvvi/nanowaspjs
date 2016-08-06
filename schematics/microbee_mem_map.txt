@@ -1,0 +1,379 @@
+Microbee Memory Map
+
+	extracted from OCR by David Vermont 2001, (ABBYY finereader)
+	for Microbee Beeboard, http://microbee.com.au 
+	report errors & additions: microbee@gmail.com
+
+	WILDCARDS VOLUME TWO
+		More Application Notes And Tips For The Microbee Personal Computer
+		Copyright (c) 1983 by R.A. Burt, P.T. Ford and A. Nallawalla 
+
+Appendix 3:
+
+MEMORY MAP PAGE 112
+DEC HEX DESCRIPTION
+0	0000	HIRES/Cassette scratch; buffer for IN/OUT#
+128	0080	Interrupt vectors
+136	0088	PIO Interrupt vectors
+138	008A	Network interrupt vector LSB+1
+140	008C	Break key: 0=enable, 1=disable
+141	008D	0 to enable EDIT/SAVE/LIST; Non zero to disable
+160	00A0	Top of RAM pointer LSB+1
+162	00A2	Warm start jump address LSB+1
+164	00A4	Initial check byte LSB+1: 55AA for warm start
+166	00A6	Machine Language EXEC address
+168	00A8	Jump vector for MEM/PAK
+171	00AB	Jump vector for. NET
+174	00AE	Jump vector for. EDASM
+178	00B2	VDU output vector LSB+1
+180	00B4	Parallel port output vector LSB+1
+182	00B6	300 baud Cassette output vector LSB+1
+184	00B8	1200 baud Cassette output vector LSB+1
+186	00BA	300 baud RS232 output vector LsB+1
+188	00BC	1200 baud RS232 output vector LSB+1
+190	00BE	Reserved output vector LSB+1
+192	0000	Reserved output vector LSB+1
+194	00C2	Keyboard input vector LSB+1
+196	00C4	Parallel port input vector LSB+1
+198	0006	300 baud Cassette input vector LSB+1
+200	0008	1200 baud Cassette input vector LSB+1
+202	00CA	300 baud RS232 input vector LSB+1
+204	00CC	1200 baud RS232 input vector LSB+1
+206	00CE	Reserved input vector LSB+1
+208	00D0	Reserved input vector LSB+1
+210	00D2	6545 R0 Total # of Horiz chars -1 per line Determines horizontal sync frequency
+211	00D3	6545 R1 Total # of displayed chars per line
+212	00D4	6545 R2 Pos of horiz sync pulse on a line
+213	00D5	6545 R3 Vert and horiz sync widths (2 nibbles)
+214	00D6	6545 R4 Vert total rows per screen -1 
+
+MEMORY MAP PAGE 113
+DEC	HEX	DESCRIPTION
+215	00D7	6545 R5 Vert total line adjust
+216	00D8	6545 R6 Total # of vert displayed rows
+217	00D9	6545 R7 Vert sync position
+218	00DA	6545 R8 Mode control register
+219	00DB	6545 R9 # of scan lines per character
+220	00DC	6545 R10 Cursor start line and blink mode
+221	00DD	6545 R11 Cursor end line
+222	00DE	6545 R12 Display start address (high)
+223	00DF	6545 R13 Display start address (low)
+224	00E0	6545 R14 Cursor position (high)
+225	00E1	6545 R15 Cursor position (low)
+226	00E2	Output device byte
+227	00E3	List output device byte
+228	00E4	Input device byte
+229	00E5	Video mode byte
+230	00E6	Output speed byte
+231	00E7	PCG characters used
+232	00E8	PLOT type (H=48,I=49,R=52)
+233	00E9	Tape baud: 1=1200 4=300
+234	00EA	RS232 baud: 1=1200 0=300
+235	00EB	PLOT/Tape buffer (till 0100):
+256	0100	Start of CP/M Transient Program area (till BFFF)
+256	0100	PLOT/Tape buffer (from 00EB):
+235	00EB	- 00F8 PLOT: Scratch area
+249	00F9	- 00FA PLOT: end X
+251	00FB	- 00FC PLOT: end Y
+253	00FD	- 00FE PLOT: start X
+255	00FF	- 0100 PLOT: start Y
+235	00EB	- 00F0 Tape: Name of file to load
+241	00F1	- 00F6 Tape: Name of file loaded
+247	00F7	Tape: File type
+248	00F8	- 00F9 Tape: Length of file
+250	00FA	- 00FB Tape: Start address
+252	00FC	- 00FD Tape: Auto-start address
+254	00FE	Tape: Speed (FF=1200,00=300 bd)
+255	00FF	Tape: Auto-start flag
+256	0100	Tape: (spare)
+257	0101	Shift Lock 0=Lower case, 1=Upper case
+258	0102	Keyboard auto-repeat delay, 255=off, 52=on
+259	0103	Delay for keyboard debounce LSB+1
+262	0106	ASCII value of last key pressed
+263	0107	(as above but used by KEY$)
+264	0108	External keyboard buffer
+265	0109	Handshake byte for par port out; zero if usable
+266	010A	Number of bytes in Cassette redirect buffer
+267	010B	CURS position buffer LSB+1
+269	010D	NZ if last VDU out char was ESC
+270	010E	Save text pointer in graphics
+273	0111	List buffer size: Initialised as B8 by NEW
+274	0112	Save BASIC text pointer
+278	0116	Scratch for RENUM
+279	0117	Scratch for RENUM 
+
+MEMORY MAP	PAGE 114
+DEC	HEX	DESCRIPTION
+280	0118	Save start of REAL number
+282	011A	Random number seed (till 0129)
+297	0129	Random number seed (from 011A)
+298	012A	LOAD type: 0=LOAD or SAVE, 1=LOAD?, 2=LOADU
+318	013E	Save text pointer
+319	013F	CONTinue address LSB+1
+320	0140	Address of current line LSB+1
+322	0142	Line number if ON ERROR active LSB+1
+324	0144	Which error message - ERRORC
+325	0145	ERRORL LSB+1
+512	0200	HIRE /PCG scratch (till 03FF)
+512	0200	Length of Source file
+561	0231	Pointer to end of Source file
+603	025B	Monitor Scratch pad 6
+605	025D	Monitor Scratch pad 7
+768	0300	Cassette buffer
+784	0314	EDASM Monitor Tape Header buffer
+932	03A4	Top of Monitor stack
+1023	03FF	HIRE /PCG scratch (from 0200)
+1024	0400	FOR ...NEXT stack for BASIC (till 04FF)
+1279	04FF	FOR ...NEXT stack for BASIC (from 0400)
+1280	0500	Start of 208 2 byte pointers for Real variables
+1280	0500	Word-Bee file initialised flag
+1299	0513	Word-Bee top of memory pointer LSB+1
+1303	0517	Word-Bee start of file pointer LSB+1
+1309	051D	Word-Bee end of file pointer LSB+1
+1335	0537	Word-Bee Monitor Tape Header buffer
+1392	0570	Location of cursor in Monitor mode LSB+1
+1395	0573	Address of Monitor initial entry e.g E or A command
+1712	06B0	Start of 26 2 byte pointers for Integer variables
+1764	06E4	Address of line containing FNO LSB+1
+1766	06E6	Address of line containing FN1 LSB+1
+1768	06E8	Address of line containing FN2 LSB+1
+1770	06EA	Address of line containing FN3 LSB+1
+1772	06EC	Address of line containing FN4 LSB+1
+1774	06EE	Address of line containing FN5 LSB+1
+1776	06F1	Address of line containing FN6 LSB+1
+1778	06F3	Address of line containing FN7 LSB+1
+1832	0728	208 char Input/Program line buffer (till 07E0)
+2016	07E0	208 char Input/Program line buffer (from 0728)
+2048	0800	192 character :List output buffer
+2240	08C0	N . of sig. digits (must be < 62) - Start prog info
+2243	08C3	Input edit buffer pointer
+2245	08C5	Input buffer pointer LSB+1
+2247	08C7	Line size
+2250	08CA	Current line
+2254	08CE	Top of string pointer LSB+1
+2256	08D0	Program Begin pointer LSB+1
+2258	08D2	Program End pointer LSB+1 (for recovery)
+2260	08D4	Top of For...Next stack LSB+1
+2262	08D6	Output pointer
+2264	08D8	Next available location for storing variable LSB+1 
+
+MEMORY MAP	PAGE 115
+DEC	HEX	DESCRIPTION
+2268	08DC	String pointer: top of free memory
+2272	08E0	PRMT character
+2273	08E1	System prompt character '>'
+2274	08E2	Line size
+2275	08E3	Zone width
+2276	08E4	Variable key
+2281	08E9	Data pointer LSB+1
+2284	08EC	Lower limit of string area LSB+1
+2286	08EE	AUTO increment
+2287	08EF	AUTO current line number LSB+1
+2293	08F5	POS LSB+1
+2295	08F7	Default line for EDIT LSB+1
+2299	08FB	No of GOSUBs active
+2300	08FC	0=LPRINT, 1=PRINT, bit 7 set for TRACE
+2301	08FD	CONT line number LSB+1
+2303	08FF	(unused)
+2304	0900	Start of BASIC program. Start of Word-Bee file (must be 0D hex)
+2305	0901	First character in Word-Bee file
+8191	1FFF	End of RAM in 8k machine
+16128	3F00	Stac /top of strings for 16k
+16383	3FFF	End of RAM in 16k machine
+32512	7F00	Stac /top of strings for 32k
+32767	7FFF	End of RAM in 32k machine
+32768	8000	Start of BASIC
+32771	8003	BASIC warm start
+32774	8006	Wait for Keyboard input - A register
+32777	8009	Scan Keyboard
+32780	800C	Display character in B register
+32783	800F	(unused)
+32786	8012	Get byte from cassette
+32789	8015	Get B bytes from cassette
+32792	8018	Cassette byte out A
+32795	801B	B bytes out to cassette from (HL)
+32798	801E	Auto-execute address for saving BASIC program
+32801	8021	Warm start for restoring Reset jump
+32804	8024	HIRES initialisation
+32807	8027	LORES initialisation
+32810	802A	INVERSE initialisation
+32813	802D	UNDERLINE initialisation
+32816	8030	SET dot: X = HL, Y = DE
+32819	8033	RESET dot returns Z if OK
+32822	8036	INVERT dot
+32825	8039	Test for dot - NZ if set/error
+32828	803C	PLOT a line
+32831	803F	Redirected input A
+32834	8042	Redirected output A
+32837	8045	Redirected print output A
+32840	8048	Jump to BASIC with CLEAR
+32843	804B	Jump to BASIC command level
+32846	804E	Jump to BASIC after NET or MEM
+32849	8051	Check buffer 
+
+MEMORY MAP	PAGE 116
+DEC	HEX	DESCRIPTION
+32852	8054	Insert new line
+32855	8057	Line into list buffer
+32858	805A	Option not fitted error
+32861	805D	Syntax error
+32908	808C	Print "7"
+32912	8090	Print a space
+32914	8092	Display char in A register on printer or VDU
+33349	8245	Skip blanks
+33751	83D7	Jump vector for RUN
+33852	843C	Prompt byte - 3E hex for ">"
+33908	8474	Take token in A reg. and return Jump vector in HL
+33934	848E	Clear variables
+34052	8504	Check keys pressed with <RESET>
+34071	8517	Monitor to BASIC warm start
+34074	851A	Return to BASIC without corrupting E2 or E4
+34091	852B	Clear first 900 hex bytes
+34104	8538	Initialise keyboard code
+34109	853D	Initialise vectors
+34151	8567	Find top of memory
+34183	8587	Jump vector for NEW
+34215	85A7	Load 16 bytes addressed by HL into 6545 registers
+34230	85B6	Jump vector for LLIST
+34238	85BE	Jump vector for LIST
+36968	9034	Jump vector for LET
+36938	904A	Jump vector for LPRINT
+36946	9052	Jump vector for PRINT
+36985	9479	Jump vector for IF
+38044	949C	Jump vector for GOTO
+38381	95ED	Jump vector for FOR
+38590	96BE	Jump vector for NEXT
+38814	979E	Jump vector for INPUT
+38950	9826	Jump vactor for DATA
+39015	9867	Jump vector for READ
+39090	98B2	Jump vector for DIM
+39289	9979	Jump vector for END
+39295	997F	Jump vector for STOP
+39340	99AC	Print text pointed to by HL register
+39368	99C8	Jump vector for AND, CHR, ELSE, KEY, NOT, OFF,OR , SPC, STEP, STR, TAB, THEN and TO
+39371	99CB	Jump vector for POKE
+39398	99E6	Jump vector for OUT
+39512	9A58	Jump vector for ZONE
+39530	9A6A	Jump vector for SD
+39550	9A7E	Jump vector for RESTORE
+39582	9A9E	Jump vector for PRMT
+39596	9AAC	Jump vector for CLEAR
+39627	9ACB	Jump vector for IN
+39662	9AEE	Jump vector for INT
+39674	9AFA	Jump vector for PEEK
+39683	9B03	Jump vector for USR
+39720	9B28	Jump vector for LEN
+39753	9B49	Jump vector for ABS 
+
+MEMORY	MAP	PAGE 117
+DEC	HEX	DESCRIPTION
+39773	9B5D	Jump vector for RND
+39828	9B94	Jump vector for FLT
+39861	9BB5	Jump vector for FRE
+39901	9BDD	Jump vector for SQR
+40034	9C62	Jump vector for GOSUB
+40105	9CA9	Jump vector for RETURN
+40126	9CBE	Jump vector for VAR
+40174	9CEE	Jump vector for FRACT
+40200	9D08	Jump vector for SGN
+40300	9D6C	Jump vector for SEARCH
+40360	9DA8	Jump vector for STRS
+40387	9DC3	Jump vector for VAL
+40562	9E72	Jump vector for SIN
+40678	9EE6	Jump vector for ATAN
+40659	9ED3	Jump vector for COS
+40797	9F5D	Jump vector for LOG
+40939	9FEB	Jump vector for EXP
+41095	A087	Jump vector for ON
+41265	A131	Jump vector for TRACE
+41322	A16A	Jump vector for CONT
+41366	A196	Jump vector for POS
+41381	ALAS	Jump vector for ASC
+41399	A1B7	Jump vector for FN
+41429	A1D5	Jump vector for REM
+41667	A2C3	Jump vector for EDIT
+41870	A38E	Print text pointed to by HL register
+41941	A3D5	Parallel port input vector
+41961	A3E9	Keyboard input vector
+41971	A3F3	Test for key repeat 14 times
+42238	A4FE	Test Shift key
+42244	A504	Test Control key
+42250	A50A	Test for particular key pressed
+42434	A5C2	Line input of text
+42523	A61B	Jump vector for CLS
+42541	A62D	Call address to print a space
+42543	A62F	VDU out - A register
+42724	A6E4	Shift screen
+42772	A714	Jump vector for PLAY
+42847	A75F	Generate one of 255 poss tones
+42877	A77D	Jump vector for SPEED
+42894	A78E	Set cursor position
+42925	A7AD	Turn off cursor
+42936	A7B8	Jump vector for NORMAL
+42944	A7C0	Jump vector for PCG
+42952	A7C8	Jump vector for UNDERLINE
+43003	A7FB	Jump vector for INVERSE
+43052	A82C	300 baud RS232 input vector
+43057	A831	1200 baud RS232 input vector
+43130	A87A	300 baud RS232 output vector
+43135	A87F	1200 baud RS232 output vector
+43212	ABCC	Get program name
+43234	A8E2	Compare program names 
+
+MEMORY MAP	PAGE 118
+
+DEC	HEX	DESCRIPTION
+43260	A8FC	Display "*" during LOAD
+43284	A914	Jump vector for SAVE
+43382	A976	Jump vector for LOAD
+43407	A98F	Get desired program
+43639	AA77	Jump vector for EXEC
+43682	AAA2	Beep
+43723	AACB	Read 16 nulls + '1' from tape header
+43768	AAF8	Long delay routine
+43781	AB05	Write 64 nulls + '1' - tape header info
+43841	AB41	2400 hertz out
+43875	AB63	1200 hertz out
+43980	ABCC	300 baud Cassette output vector
+43987	ABD3	1200 baud Cassette output vector
+44100	AC44	300 baud Cassette input vector
+44104	AC48	1200 baud Cassette input vector
+44204	ACAC	Reserved input vector
+44215	ACB7	Jump vector for CURS
+44255	ACDF	Jump vector for AUTO
+44379	AD5B	Jump vector for HIRES
+44385	AD61	Jump vector for SET
+44401	AD71	Jump vector for RESET
+44409	AD79	Jump vector for INVERT
+44417	AD81	Jump vector for POINT
+44550	AE06	Jump vector for USED
+44952	AF98	Jump vector for LORES
+45152	B060	Jump vector for PLOT
+45595	B21B	Jump vector for RENUM
+46256	B4B0	Jump vector for DELETE
+46355	B513	Jump vector for GX
+46584	B5F8	Parallel port output vector
+46609	B611	Jump vector for EDASM
+46617	B61C	Jump vector for MEM/NET
+46647	B637	Jump vector for ERROR
+47196	B85C	Power-up message: "Applied Technology " etc
+47821	BACD	Start of initial set of values for 6545 registers above values are copied to D2 to El
+47844	BAE4	Sound frequency data
+48628	BDF4	Reset/Control sequences
+48646	BE06	Jump to Monitor (if fitted)
+48651	BEll	Self-test on BASIC 5.10
+49151	BFFF	End of BASIC or CP/M Transient Program area
+49152	C000	EDASM/Word-Bee if fitted
+49155	C003	EDASM Monitor entry point
+54129	D371	Word-Bee version 1.0 tape copy routine
+54477	D4CD	Word-Bee version 1.2 tape copy routine
+57205	DF75	EDASM tape copy routine
+57344	E000	NETwork/Boot ROM if fitted
+61439	EFFF	End of NETwork/Boot ROM
+61440	F000	Start of screen RAM and Character gen Data
+62463	F3FF	End of screen memory (64 x 16)
+62464	F400	Start of 17th line (64 x 16)
+62527	F43F	End of 17th line (64 x 16)
+63487	F7FF	End of screen RAM and Character gen Data
+63488	F800	Start of PCG or Colour RAM
+65535	FFFF	End of PCG or Colour RAM 
