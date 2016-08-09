@@ -298,7 +298,7 @@ nanowasp.Crtc.prototype = {
         }
         
         if (fullRenderRequired) {
-            this._graphicsContext.fillStyle = nanowasp.CrtcMemory.prototype.BACKGROUND_COLOR_CSS;
+            this._graphicsContext.fillStyle = nanowasp.CrtcMemory.prototype.BACKGROUND_COLOR_CSS;// do we lookup bg colour to clear screen??
             this._graphicsContext.fillRect(0, 0, this._graphicsContext.canvas.width, this._graphicsContext.canvas.height);
         }
     
@@ -314,6 +314,10 @@ nanowasp.Crtc.prototype = {
                 
                 if (fullRenderRequired || cursor != null || address == this._lastCursorPosition || this._crtcMemory.isDirty(address)) {
                     var characterImage = this._crtcMemory.getCharacterData(address, this._scansPerRow, cursor);
+                    
+                    // we need to get colour information from colour ram. similar to above
+                    // var characterCol = this._crtcMemory.getCharacterCol(address);
+                    // this._graphicsContext.fillStyle = characterCol;
                     this._graphicsContext.putImageData(characterImage, x, y, 0, 0, nanowasp.CrtcMemory.prototype.CHAR_WIDTH, this._scansPerRow);
                 }
 
