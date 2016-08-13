@@ -23,7 +23,7 @@ A3-2 = 00 - Z80 PIO
 
 When second decoder enabled:
 A1-0 = 00 - Port 08 (n/c?) ------------ like Latch ROM, When Colour RAM bit 6 of of port 8 is 1, 0xF800 to 0xFFFF 
-     = 01 - Port 09 (n/c?)
+     = 01 - Port 09 (n/c?) ------------ firing write=255 before playing sound port2 write=64
      = 10 - Port 0A (available on header X4)
      = 11 - Latch ROM
 
@@ -67,7 +67,7 @@ Detail by Port Number
 	Bit 7 - Background Intensity mode
 
 
-0x09: unused?
+0x09: unused? -- port 9 write=255 firing before playing sound (port 2 write=64) ???
 
 
 0x0A: available on header X4 (pin 9, label "PORT A/IEO")
